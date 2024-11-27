@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Explore Your Favorite Sports</h1>
+        <p>Discover the world of sports with detailed explanations and stunning visuals.</p>
+    </header>
+
+    <div class="sports-container">
+        <div class="sport-card" id="cricket">
+            <div class="image-container">
+                <img src="Cricket.webp" alt="Cricket">
+            </div>
+            <h2>Cricket</h2>
+            <p>Cricket is a bat-and-ball game played between two teams of eleven players on a field...</p>
+        </div>
+        <div class="sport-card" id="football">
+            <div class="image-container">
+                <img src="Football.jpg" alt="Football">
+            </div>
+            <h2>Football</h2>
+            <p>Football is a team sport played between two teams of eleven players each...</p>
+        </div>
+        <div class="sport-card" id="tennis">
+            <div class="image-container">
+                <img src="Tennis.jpeg" alt="Tennis">
+            </div>
+            <h2>Tennis</h2>
+            <p>Tennis is a racket sport that can be played individually against a single opponent...</p>
+        </div>
+        <div class="sport-card" id="basketball">
+            <div class="image-container">
+                <img src="Basketball.webp" alt="Basketball">
+            </div>
+            <h2>Basketball</h2>
+            <p>Basketball is a team sport where two teams, typically of five players each, compete to score...</p>
+        </div>
+    </div>
+
+    <!-- Popup Form -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close" class="close">&times;</span>
+            <h2 id="popup-title">Sport Details</h2>
+            <div id="popup-description" class="popup-description">
+                <!-- Detailed text about the selected sport will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        
+        <p>Designed by Sereen Diabat, Gharam Samara</p>
+    </footer>
+
+    <script >
+        document.addEventListener('DOMContentLoaded', () => {
+    const sportCards = document.querySelectorAll('.sport-card');
+    const popup = document.getElementById('popup');
+    const closeButton = document.getElementById('close');
+    const popupTitle = document.getElementById('popup-title');
+    const popupDescription = document.getElementById('popup-description');
+
+    // Add event listener to each sport card
+    sportCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const sport = card.querySelector('h2').innerText;
+            let description;
+
+            // Detailed description of Cricket
+            if (sport === 'Cricket') {
+                description = `
+                    Cricket is a bat-and-ball game played between two teams of eleven players on a field at the center of which is a 22-yard pitch with a wicket at each end, each comprising two bails balanced on three stumps.
+                    The game has various formats, including Test matches, One Day Internationals (ODIs), and Twenty20 (T20) matches. Each format has a different number of overs (sets of six balls bowled) and rules. The most famous competition is the ICC Cricket World Cup, held every four years.
+                    Players in the batting team aim to score runs by hitting the ball with a bat and running between the wickets or by hitting boundaries. The fielding team aims to dismiss the batsmen by various means, including catching the ball or hitting the stumps with the ball.
+                    Cricket is a global sport with a rich history and an ever-growing fan base.
+                `;
+            } else if (sport === 'Football') {
+                description = `
+                    Football, known as soccer in some countries, is a team sport where two teams of eleven players each compete to score the most goals. The game is played on a rectangular field with a goal at each end. The ball is primarily kicked by players and must cross the goal line to score. 
+                    Football is one of the most popular sports in the world, with major leagues like the Premier League, La Liga, and tournaments like the FIFA World Cup.
+                    Players work together to pass, dribble, and shoot the ball, while the opposing team defends and attempts to prevent scoring. The sport requires a combination of stamina, skill, and teamwork, making it thrilling for both players and spectators alike.
+                `;
+            } else if (sport === 'Tennis') {
+                description = `
+                    Tennis is a racket sport played either individually against a single opponent (singles) or between two teams of two players each (doubles). The game is played on a rectangular court divided by a net, and players use rackets to strike a rubber ball over the net into the opponent's court.
+                    Tennis is played at various levels, from recreational play to professional tournaments such as Wimbledon, the US Open, and the French Open. The sport has four Grand Slam tournaments, and the aim is to score points by hitting the ball in such a way that the opponent cannot return it.
+                    Tennis requires agility, precision, and endurance, and is known for its intense and strategic rallies.
+                `;
+            } else if (sport === 'Basketball') {
+                description = `
+                    Basketball is a team sport where two teams, typically of five players each, compete to score by shooting a ball through a hoop. The game is played on a rectangular court, and players use their hands to dribble and pass the ball, aiming to outscore the opposing team.
+                    The National Basketball Association (NBA) is one of the premier basketball leagues in the world, and major tournaments like the FIBA World Cup showcase the best basketball talent globally.
+                    Basketball is fast-paced, requiring a combination of physical fitness, coordination, and tactical thinking. It’s a high-scoring game that combines individual skills with team strategy.
+                `;
+            }
+
+            // Set the title and detailed description in the popup
+            popupTitle.innerText = sport;
+            popupDescription.innerHTML = description;
+
+            // Show the popup
+            popup.style.display = 'flex';
+        });
+    });
+
+    // Close the popup when clicking the "X" button
+    closeButton.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    // Close the popup when clicking outside of the content area
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
